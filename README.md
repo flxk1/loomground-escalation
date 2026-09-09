@@ -4,32 +4,7 @@
 
 **How much autonomy do these factors leave?**
 
-Autonomy as the lowest ceiling several factors impose, never a weighted sum. Monotone, attributable, fail-closed. The ladder is the caller's.
-
-## Scope
-
-One problem. This package answers the question above and nothing adjacent to it.
-If a change here would also need a second question answered, it belongs in a
-different repository.
-
-## Where it sits
-
-```
-grammar ──▶ versum ──▶ solver ──▶ loomground-escalation
-```
-
-Above the reasoning kernel, never beside it. It uses `loomground-solver`'s shared
-three-valued verdict, its OPEN-dominant strict-AND fold, and its injected ports —
-and reaches into no solver internals. Nothing in the kernel imports this package,
-and nothing here imports governance, a corpus, or a domain.
-
-## Contract
-
-The package **reports**; it resolves nothing and decides nothing. Judgements
-arrive already made, from whoever can be held to them, and are compared rather
-than derived. Where a term is absent it escalates rather than passing: an
-unmeasured input is not the same as a satisfied one, and the two never collapse
-into a single value.
+Computes the autonomy ceiling imposed by multiple governance factors.
 
 ## Install
 
@@ -37,6 +12,30 @@ into a single value.
 pip install loomground-escalation
 ```
 
-## Licence
+## Usage
 
-Apache-2.0 for the code; CC-BY-4.0 for the prose in this README. See `NOTICE`.
+```python
+from loomground_escalation import Factor, Ladder, ceiling, autonomy_verdict
+ladder = Ladder(("L0", "L1", "L2", "L3", "L4"))
+esc = ceiling([Factor("risk", "L2"), Factor("reversibility")], delegated="L4", ladder=ladder)
+esc.granted, esc.binding, autonomy_verdict("L3", esc)
+```
+
+## Interface
+
+- inputs: `Ladder(levels)` ascending, caller-supplied · `Factor(name, ceiling, why)` · `delegated`
+- output: `Escalation(granted, binding, delegated, ladder, factors)`; unassessed caps at `ladder.floor`
+- `autonomy_verdict(requested, escalation) → Verdict` · `fold_autonomy(steps) → IssueAggregate`
+- from solver: `cross_subsumption.Verdict` · `issue_aggregation.aggregate_issues`
+
+## Family
+
+Diagnostic operator; consumes `loomground-solver` 0.5; consumed by hosts. Pipeline: `source → loomground-ingest → loomground-versum → loomground-solver → loomground-escalation`. Operator contract: [spec/OPERATORS.md](https://github.com/flxk1/loomground/blob/main/spec/OPERATORS.md). [docs/operator.md](docs/operator.md).
+
+## Status
+
+0.1.0 · 31 tests · Python >=3.10 · solver 0.5
+
+## License
+
+Apache-2.0 `LICENSES/Apache-2.0.txt` (code) · CC-BY-4.0 `LICENSES/CC-BY-4.0.txt` (README) · `NOTICE`
