@@ -6,6 +6,10 @@
 
 Computes the autonomy ceiling imposed by multiple governance factors.
 
+## Problem
+
+Autonomy is a single setting; conflicting constraints average out. The lowest ceiling from all factors, unassessed factors at the floor.
+
 ## Install
 
 ```
@@ -17,8 +21,16 @@ pip install loomground-escalation
 ```python
 from loomground_escalation import Factor, Ladder, ceiling, autonomy_verdict
 ladder = Ladder(("L0", "L1", "L2", "L3", "L4"))
-esc = ceiling([Factor("risk", "L2"), Factor("reversibility")], delegated="L4", ladder=ladder)
+esc = ceiling([Factor("data-sensitivity", "L2"), Factor("jurisdiction", "L3")], delegated="L3", ladder=ladder)
 esc.granted, esc.binding, autonomy_verdict("L3", esc)
+```
+
+## Example
+
+```
+in : delegated L3 · data-sensitivity caps L2 · jurisdiction caps L3 · request at L3
+out: L2 ('data-sensitivity',)
+     Verdict.NOT_SATISFIED
 ```
 
 ## Interface
