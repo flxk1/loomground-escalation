@@ -5,7 +5,9 @@
       "release-type": "python",
       "package-name": "loomground-escalation",
       "changelog-path": "CHANGELOG.md",
-      "version-file": "src/loomground_escalation/_version.py"
+      "extra-files": [
+        "src/loomground_escalation/_version.py"
+      ]
     }
   }
 }
