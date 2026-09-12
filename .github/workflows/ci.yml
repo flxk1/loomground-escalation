@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       STANDARDS_REPO: https://github.com/flxk1/repo-standards
-      STANDARDS_REF: 95095e9f45e972ba7f739db467c329f96b3e6dbd
+      STANDARDS_REF: c262400f556bd957b08cf22341279db358ff1ab1
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
