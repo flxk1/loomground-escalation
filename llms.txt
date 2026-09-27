@@ -7,7 +7,7 @@ Autonomy is a single setting; conflicting constraints average out. The lowest ce
 
 ## Install
 ```
-pip install loomground-escalation
+pip install git+https://github.com/flxk1/loomground-escalation
 ```
 
 ## Usage
