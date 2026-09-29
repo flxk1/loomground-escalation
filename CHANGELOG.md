@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.1](https://github.com/flxk1/loomground-escalation/compare/loomground-escalation-v0.2.0...loomground-escalation-v0.2.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* release version source (extra-files marker), 0.2.0 ([e398bb9](https://github.com/flxk1/loomground-escalation/commit/e398bb900657ae210b35239f0235083b185279fb))
+
+
+### Documentation
+
+* correct stale claims; add How this is made ([e9e9c78](https://github.com/flxk1/loomground-escalation/commit/e9e9c785c9868398757f51ec3004dc8b874fd291))
+* correct stale statements and add How this is made ([79977f1](https://github.com/flxk1/loomground-escalation/commit/79977f1f529cf39c034b3a2aefbb85a778d9f0cb))
+* How this is made names no model vendor ([a84d241](https://github.com/flxk1/loomground-escalation/commit/a84d2413fd86d7e03ef0e7663b3f5a1e24e6cf31))
+
 ## [0.2.0](https://github.com/flxk1/loomground-escalation/compare/loomground-escalation-v0.1.0...loomground-escalation-v0.2.0) (2026-09-11)
 
 
